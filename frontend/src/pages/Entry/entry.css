@@ -1,0 +1,176 @@
+/* frontend/pages/Entry/entry.css */
+
+/* Define CSS Variables for consistent theming */
+:root {
+    --primary-color: #4CAF50; /* Example green */
+    --secondary-color: #FFC107; /* Example amber */
+    --dark-red: #D32F2F; /* Example dark red */
+    --cream: #FFFDD0; /* Example cream color */
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #ffffff;
+    --border-radius: 10px;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.entry-page {
+    /* Use padding-top to push content below a fixed Navbar */
+    /* Adjust this value based on your Navbar's actual height */
+    padding-top: 80px; /* Assuming Navbar height is around 60-70px, add some extra space */
+    min-height: calc(100vh - 140px); /* Adjust based on Navbar and Footer heights */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding-bottom: 50px; /* Space for footer */
+}
+
+.entry-header {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.entry-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.create-entry-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.create-entry-btn:hover {
+    background-color: #45a049; /* Slightly darker green */
+}
+
+.entriesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    gap: 30px; /* Reduced gap for better spacing */
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.entriesContainer .entryItem {
+    flex: 1 1 calc(33% - 40px); /* Responsive sizing: 3 items per row, accounting for gap */
+    min-width: 300px; /* Minimum width for each item */
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+/* Ensure entryItem height is flexible rather than fixed */
+.entryItem {
+    height: auto; /* Changed from fixed height */
+}
+
+.entryItem h1 {
+    background-color: var(--dark-red);
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.entryItem h2 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+.entryItem .mealsContainer,
+.entryItem .routinesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px; /* Smaller gap for items within containers */
+    margin-top: 5px;
+}
+
+.entryItem .mealsContainer .mealItem,
+.entryItem .routinesContainer .routineItem {
+    background-color: var(--cream);
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 20px; /* More rounded pills */
+    font-size: 0.9rem;
+    color: var(--text-color);
+    white-space: nowrap; /* Prevent text wrapping inside item */
+}
+
+.no-entries-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.loading-message, .error-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 50px;
+}
+
+.error-message {
+    color: var(--dark-red);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .entry-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .entriesContainer .entryItem {
+        flex: 1 1 calc(50% - 30px); /* 2 items per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .entry-header h1 {
+        font-size: 2rem;
+    }
+    .create-entry-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .entriesContainer .entryItem {
+        flex: 1 1 90%; /* 1 item per row on mobile */
+    }
+    .entry-page {
+        padding-top: 100px; /* More space for smaller screens if Navbar is taller */
+    }
+}
